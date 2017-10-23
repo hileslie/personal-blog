@@ -2,7 +2,8 @@
 title: vue
 date: 2017-07-13 12:44:44
 tags:
-  - vue, JavaScript
+  - vue
+  - JavaScript
 categories: 
   - 笔记
 ---

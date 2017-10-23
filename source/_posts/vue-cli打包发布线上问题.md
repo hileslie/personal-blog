@@ -2,9 +2,10 @@
 title: vue-cli打包上线
 date: 2017-06-13 12:44:44
 tags:
-  - vue, JavaScript
+  - vue
+	- JavaScript
 categories: 
-  - 笔记
+  - 工作
 ---
 vue-cli打包上线相关问题
 
