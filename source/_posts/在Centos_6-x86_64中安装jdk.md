@@ -6,7 +6,7 @@ tags:
 categories: 
   - 笔记
 ---
-如何在系统为Centos 6 x86_64的vps主机中安装JDK
+>如何在系统为Centos 6 x86_64的vps主机中安装JDK
 
 <!-- more -->
 

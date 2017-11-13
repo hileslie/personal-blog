@@ -1,5 +1,5 @@
 ---
-title: vue
+title: vue小技巧
 date: 2017-07-13 12:44:44
 tags:
   - vue
@@ -7,7 +7,7 @@ tags:
 categories: 
   - 笔记
 ---
-关于vue的一些小技巧
+>关于vue的一些小技巧
 
 <!-- more -->
 
