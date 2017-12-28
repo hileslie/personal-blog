@@ -7,14 +7,16 @@ tags:
 categories: 
   - 笔记
 ---
-关于vue的一些小技巧
+
+关于 vue 的一些小技巧
 
 <!-- more -->
 
 ## 路由懒加载
 
-使用普通的import路由导出方式，打包时会打包到一个js文件中，但当项目大的时候，js文件夹会过大，导致页面初始化加载时非常慢：
-``` bash
+使用普通的 import 路由导出方式，打包时会打包到一个 js 文件中，但当项目大的时候，js 文件夹会过大，导致页面初始化加载时非常慢：
+
+```bash
 	import Vue from 'vue'
 	import App from './App'
 	import VueRouter from 'vue-router';
@@ -46,9 +48,12 @@ categories:
 	  router
 	})
 ```
-***
+
+---
+
 这时使用路由懒加载模式，可以按需加载路由，优化页面的加载速度：
-``` bash
+
+```bash
 	import Vue from 'vue'
 	import App from './App'
 
@@ -59,10 +64,12 @@ categories:
 
 	Vue.use(VueRouter);
 ```
-***
-但是在开发时，过多的路由懒加载，会导致修改代码，页面热更新时的速度非常慢，不利于开发，这时可以自定义封装一个方法，例如_import()方法，在正式环境下才使用懒加载：
 
-``` bash
+---
+
+但是在开发时，过多的路由懒加载，会导致修改代码，页面热更新时的速度非常慢，不利于开发，这时可以自定义封装一个方法，例如\_import()方法，在正式环境下才使用懒加载：
+
+```bash
 	import Vue from 'vue'
 	import App from './App'
 
@@ -77,10 +84,12 @@ categories:
 ```
 
 以上笔记借鉴出处[https://segmentfault.com/a/1190000010043013#articleHeader1](https://segmentfault.com/a/1190000010043013#articleHeader1)
-***
 
-## vue倒计时功能demo
-``` bash
+---
+
+## vue 倒计时功能 demo
+
+```bash
 	<div id="app">
         <button @click="countDown" :disabled="disabled">{{countdown}}</button>
     </div>
@@ -112,13 +121,16 @@ categories:
         }
     })
 ```
+
 ![](http://i.imgur.com/ewkdj8j.png)
-***
 
-## 设置vue全局过滤器filter
+---
 
-新建一个filter.js文件，内容如下：
-``` bash
+## 设置 vue 全局过滤器 filter
+
+新建一个 filter.js 文件，内容如下：
+
+```bash
 	export function fromTime(now) {
 	  var date = new Date(now);
 	  var seperator1 = "-";
@@ -135,22 +147,59 @@ categories:
 	  return currentdate;
 	}
 ```
-在main.js文件中，内容如下：
-``` bash
+
+在 main.js 文件中，内容如下：
+
+```bash
 	import * as filters from './filters/filters.js' // 全局vue filter
 	Object.keys(filters).forEach(key => {
 	  Vue.filter(key, filters[key])
 	});
 ```
+
 或者：
-``` bash
+
+```bash
 	import { fromTime } from './filters/filters.js'
 	Vue.filter('fromTime', fromTime)
 ```
+
 在模板中直接使用，内容如下：
-``` bash
+
+```bash
 	<tr class="item" v-for="x in recurrenceList" :key="x">
 		<td>预后随访{{x.id}}</td>
         <td>{{x.createTime | fromTime}}</td>
 	</tr>
+```
+
+## 注册全局组件
+
+在 main.js 文件中,写入一下内容：
+
+```bash
+// 单个组件注册
+import loading from './components/loading'
+Vue.component('v-loading', loading)
+```
+
+或者多个组件注册：
+
+```bash
+// 通过components下的index.js文件导入组件
+import components from './components/';
+// 对导入的组件进行全局组件注册
+Object.keys(components).forEach((key)=>{
+  Vue.component(key,components[key])
+})
+```
+
+在模板中直接使用，内容如下：
+
+```bash
+<template>
+  <div class="header">
+    <v-loading v-if="loading" :text="'退出'"></v-loading>
+  </div>
+</template>
 ```
