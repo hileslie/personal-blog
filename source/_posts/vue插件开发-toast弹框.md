@@ -30,6 +30,9 @@ vue
 * 提示框内容可编辑
 * 提示框类型可改变
 
+## 注
+* [源码地址](https://github.com/hileslie/vue-test)
+
 ## 在 component 文件夹中新建一个 toast 文件夹,新建 toast.js 和 toast.css 文件
 
 * toast.js 文件
